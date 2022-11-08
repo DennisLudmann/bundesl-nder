@@ -1,0 +1,47 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+header {
+    font-size: xx-large;
+    font-weight: 700;
+    background-color: #cecece;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+article {
+    padding: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.state__card {
+    padding-left: 8px;
+    border: 0.2em solid #cecece;
+    text-decoration: none;
+    color: darkgray;
+}
+
+.state__card:hover {
+    border: 0.2em solid #666565;
+}
+
+h3 {
+    color: rgb(71, 67, 67);
+}
+
+@media (max-width: 800px) {
+    article {
+         grid-template-columns: 1fr 1fr;
+}
+}
+
+@media (max-width: 500px) {
+    article {
+        grid-template-columns: 1fr;
+}
+}

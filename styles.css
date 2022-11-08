@@ -13,14 +13,14 @@ header {
 }
 
 article {
-    padding: 8px;
+    padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
+    gap: 10px;
 }
 
 .state__card {
-    padding-left: 8px;
+    padding-left: 10px;
     border: 0.2em solid #cecece;
     text-decoration: none;
     color: darkgray;
@@ -32,6 +32,20 @@ article {
 
 h3 {
     color: rgb(71, 67, 67);
+}
+
+#letters {
+    margin: 30px 10px;
+}
+
+.singleletters {
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    margin-right: 10px;
+    background: lightgray;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 @media (max-width: 800px) {

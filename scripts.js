@@ -7,13 +7,19 @@ async function init() {
     render();
 }
 
-function render(){
+function render(filter){
+    let content = document.getElementById('container');
+    content.innerHTML = '';
     for (let i = 0; i < states.length; i++) {
-        let element = states[i];
-        document.getElementById('container').innerHTML += 
-        generateHTML(i);
-        
-        let firstLetter = states[i]['name'].charAt(0);  // push first letters in array when they dont exist already
+        let state = states[i];
+        let population = (state['population'] + '').replace('.', ',');
+        let firstLetter = state ['name'].charAt(0); 
+        content.innerHTML = generateHTML(state, population);
+
+        if (!filter || filter == firstLetter) {
+            content.innerHTML += generateHTML(state, population);
+        }
+
         if (!letters.includes(firstLetter)) {
             letters.push(firstLetter);
         }  
@@ -21,29 +27,26 @@ function render(){
     displayLetters();
 }
 
-function generateHTML(i){ //returns the html strukture and content for the cards
-    return `
-    <a class="state__card" href="${states[i]['url']}" target=_blank>
-    <h3>${states[i]['name']}
-    </h3>
-    <p>${states[i]['population']} Millionen
-    </p>
-    </a>
-`
-}
+function filterStates(letters){
+        render(letters);
+    }
 
-function filterStates(){
-    let startsWithB = states.filter((state) => state.startsWith("B"));
-    console.log(startsWithB);
-}
-
-function displayLetters(){      // 
+function displayLetters(){
     for (let i = 0; i < letters.length; i++) {
-        const element = letters[i];
+        let element = letters[i];
         document.getElementById('letters').innerHTML += `
         <a class="singleletters">${element}</a>
         `;
     }
 }
 
-init();
+function generateHTML(state, population){ //returns the html structure and content for the cards
+    return `
+    <a class="state__card" href="${state['url']}" target=_blank>
+    <h3>${state}
+    </h3>
+    <p>${population} Millionen
+    </p>
+    </a>
+`
+}

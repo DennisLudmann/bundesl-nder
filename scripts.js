@@ -14,7 +14,7 @@ function render(filter){
         let state = states[i];
         let population = (state['population'] + '').replace('.', ',');
         let firstLetter = state ['name'].charAt(0); 
-        content.innerHTML = generateHTML(state, population);
+        // content.innerHTML = generateHTML(state, population);
 
         if (!filter || filter == firstLetter) {
             content.innerHTML += generateHTML(state, population);
@@ -27,23 +27,26 @@ function render(filter){
     displayLetters();
 }
 
-function filterStates(letters){
+function filterStates(letters) {
         render(letters);
-    }
+}
 
-function displayLetters(){
+function displayLetters() {
+    debugger;
+    let letterSection = document.getElementById('letters');
+    letterSection.innerHTML = '';
     for (let i = 0; i < letters.length; i++) {
-        let element = letters[i];
-        document.getElementById('letters').innerHTML += `
-        <a class="singleletters">${element}</a>
+        let letter = letters[i];
+        letterSection += `
+        <a onclick="filterStates('${letter}')" class="singleletters">${letter}</a>
         `;
     }
 }
 
-function generateHTML(state, population){ //returns the html structure and content for the cards
+function generateHTML(state, population) { //returns the html structure and content for the cards
     return `
     <a class="state__card" href="${state['url']}" target=_blank>
-    <h3>${state}
+    <h3>${state['name']}
     </h3>
     <p>${population} Millionen
     </p>

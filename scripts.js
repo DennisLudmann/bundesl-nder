@@ -32,15 +32,17 @@ function filterStates(letters) {
 }
 
 function displayLetters() {
-    debugger;
     let letterSection = document.getElementById('letters');
     letterSection.innerHTML = '';
     for (let i = 0; i < letters.length; i++) {
         let letter = letters[i];
-        letterSection += `
+        letterSection.innerHTML += `
         <a onclick="filterStates('${letter}')" class="singleletters">${letter}</a>
         `;
     }
+    letterSection.innerHTML += `
+    <a onclick="filterStates('')" class="singleletters">ALL</a>
+    `;
 }
 
 function generateHTML(state, population) { //returns the html structure and content for the cards

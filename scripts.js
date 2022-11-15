@@ -45,6 +45,22 @@ function displayLetters() {
     `;
 }
 
+function searchStates() {
+    let search = document.getElementById('search').value;
+    let content = document.getElementById('container');
+    content.innerHTML='';
+    search = search.toLowerCase();
+    console.log(search);
+   for (let i = 0; i < states.length; i++) {
+    let state = states[i];
+    if (state['name'].toLowerCase().includes(search)) {
+        content.innerHTML += generateHTML(state, state['population']);
+    }
+  
+    
+   }
+}
+
 function generateHTML(state, population) { //returns the html structure and content for the cards
     return `
     <a class="state__card" href="${state['url']}" target=_blank>

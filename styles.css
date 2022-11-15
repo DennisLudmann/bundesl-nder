@@ -12,6 +12,14 @@ header {
     justify-content: center;
 }
 
+label {
+    padding: 10px;
+}
+
+input {
+    margin: 10px;
+}
+
 article {
     padding: 10px;
     display: grid;
